@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<title>Citrus</title>
+</h:head>
+
+<h:body bgcolor="#DEF3F5" leftmargin="0" topmargin="0" marginwidth="0"
+	marginheight="0">
+	<table width="100%" border="0" align="center" cellpadding="0"
+		cellspacing="0">
+
+		<tr>
+
+			<td id="mybackground" width="100%" height="80" align="left"
+				valign="middle" class="logo"
+				style="padding-left: 25px; padding-right: 25px; background: url(../img/img1.gif);">
+				<div align="center" id="tit">
+					<font face="Times New Roman,Times" size="+3" color="green">
+						Citrus </font>
+				</div>
+			</td>
+
+		</tr>
+
+	</table>
+
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+
+			<h:form>
+
+				<center>
+					<h:commandButton value="List" type="submit"
+						action="#{customer.outcome3}"
+						style="background:none repeat scroll 0 0;cursor:pointer;border:none;font-size: 19px; font-style: italic; color: white;">
+					</h:commandButton>
+
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<h:commandButton value="Cart" type="submit"
+						action="#{customer.outcome}"
+						style="background:none repeat scroll 0 0;cursor:pointer;border:none;font-size: 19px; font-style: italic; color: white;">
+					</h:commandButton>
+				</center>
+
+			</h:form>
+
+		</tr>
+
+	</table>
+
+	<center>
+
+		<img style="padding-top: 15px; padding-bottom: 15px;" border="0"
+			src="./img/Citrus.gif" alt="Citrus" width="304" height="228" />
+
+	</center>
+
+
+	<table style="text-align: center;" align="center" cellpadding="0"
+		cellspacing="0" bgcolor="#DEF3F5">
+
+		<tr>
+			<td align="center" valign="middle"
+				style="text-align: center; padding-left: 30px; padding-right: 30px; padding-top: 10px;"
+				width="50%" colspan="2"><strong><u>Citrus</u> </strong> <i>belongs
+					to the genus, where a large number of interspecific and
+					intraspecific hybrids of the family Rutaceae. The main areas of
+					diversity and ancient culture of citrus fruits are India, China and
+					South East Asia, hence the first citrus fruits were introduced to
+					the West and Southwest, to the countries of the Mediterranean
+					region. Evergreen low, 3-6 (12) m tall, the trees, sometimes
+					shrubs. The leaves are ovate or lanceolate, thick, almost leathery,
+					with a translucent internal glands, which contain essential oils
+					with a strong odor, and in the axils of thorns. Petiole winged. The
+					flowers are white or pink, with a pleasant aroma, solitary or in
+					groups of several. Many citrus fruits are valuable industrial crops
+					(lemon, orange, mandarin, grapefruit and some others), they are
+					widely bred in many tropical and subtropical countries, as well as
+					in countries in the subtropical regions. Citrus fruits are in the
+					collections of botanical gardens, cultivated in a number of
+					gardening under glass and distributed as houseplants. Some of the
+					citruses, commonly known as fruit, while interesting as an
+					evergreen ornamental plants. In the juices of different citrus
+					fruits contain a lot of valuable biologically active substances,
+					other than those listed above. These substances contribute to the
+					strengthening of human health. Thus, clinical trials have shown
+					that one of them - hesperidin - has a vessel strengthening effect.
+					In the preserves and jams from the mandarins in the high
+					concentration of stored vitamin A, P and C, mineral salts, sugars,
+					organic acids, characteristic of fresh fruit..</i> <br></br> <br></br>
+			</td>
+			<td></td>
+
+		</tr>
+
+	</table>
+
+	<hr></hr>
+
+	<h:form>
+
+		<h:dataTable value="#{customer.list3}" var="c"
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row" width="100%">
+
+			<h:column>
+				<f:facet name="header">
+	    						ID		
+	    			</f:facet>
+
+				<center>
+					<h:outputText value="#{c.ID}" />
+				</center>
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+		    				Name
+					</f:facet>
+
+				<center>
+					<h:outputText value="#{c.name}" />
+				</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Group
+					</f:facet>
+				<center>#{c.group}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Manufacturer
+					</f:facet>
+				<center>#{c.manufacturer}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Form
+					</f:facet>
+				<center>#{c.form}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Price
+					</f:facet>
+				<center>#{c.price}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Quantity
+					</f:facet>
+
+				<center>
+
+					<h:inputText id="quantity" value="#{c.quantity}"
+						rendered="#{c.editable}" size="2" required="true" label="Quantity"
+						style="width: 25px; text-align:  center">
+
+						<f:validateRegex pattern="(^[0-9]{1,2})" />
+					</h:inputText>
+
+					<h:message for="quantity" style="color:red" />
+
+					<h:outputText value="#{c.quantity}" rendered="#{not c.editable}" />
+
+				</center>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header"> 
+	    				Add to cart
+					</f:facet>
+
+				<center>
+					<h:commandButton value="Add #{c.name}" type="submit" label="CD"
+						action="#{customer.outcome}"
+						actionListener="#{customer.attrListener}"
+						style="background:none repeat scroll 0 0 white;cursor:pointer;border:none;text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);">
+
+						<f:attribute name="ID" value="#{c.ID}" />
+						<f:attribute name="name" value="#{c.name}" />
+						<f:attribute name="group" value="#{c.group}" />
+						<f:attribute name="manufacturer" value="#{c.manufacturer}" />
+						<f:attribute name="form" value="#{c.form}" />
+						<f:attribute name="price" value="#{c.price}" />
+						<f:attribute name="quantity" value="#{c.quantity}" />
+
+					</h:commandButton>
+				</center>
+
+			</h:column>
+
+		</h:dataTable>
+
+	</h:form>
+
+	<hr></hr>
+
+	<br></br>
+	<br></br>
+
+	<table width="100%" border="0" align="center" cellpadding="0"
+		cellspacing="0" bgcolor="#53B4E7">
+
+		<tr>
+
+			<td height="24" align="center" valign="middle" class="text1">
+				Copyright &copy; 2012. Your Company Name. All rights reserved.</td>
+
+		</tr>
+
+	</table>
+
+
+</h:body>
+</html>

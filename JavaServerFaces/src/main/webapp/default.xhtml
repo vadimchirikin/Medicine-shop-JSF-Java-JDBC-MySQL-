@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<h:outputStylesheet library="css" name="table-style.css" />
+</h:head>
+<h:body>
+
+
+	<center>
+		<font face="Times New Roman,Times" size="+3" color="#FAF0E6">
+			List of drugs </font>
+	</center>
+
+	<hr></hr>
+
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+			<td width="780" height="38" bgcolor="white" align="center"
+				valign="middle"><h:form>
+					<h:commandButton value="Your cart" type="submit"
+						action="#{customer.outcome}"
+						style="background:none repeat scroll 0 0 white;cursor:pointer;border:none;font-size: 19px; font-style: italic; color: #2E2EFE;">
+					</h:commandButton>
+				</h:form>
+			</td>
+
+		</tr>
+	</table>
+
+	<hr></hr>
+
+	<h:form>
+
+		<h:dataTable value="#{customer.list}" var="c" styleClass="order-table"
+			headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row" width="100%">
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByOrderNo}">
+	    						ID	
+	    					</h:commandLink>
+				</f:facet>
+
+				<h:outputText value="#{c.ID}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByName}">
+		    				Name
+		    			</h:commandLink>
+				</f:facet>
+
+
+				<h:commandButton value="#{c.name}" type="submit" label="CD"
+					action="#{customer.outcome2}"
+					actionListener="#{customer.attrListener2}"
+					style="background:none repeat scroll 0 0 white;cursor:pointer;border:none;text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);color: rgba(20, 170, 255, 0.9);">
+
+
+					<f:attribute name="ID" value="#{c.ID}" />
+					<f:attribute name="name" value="#{c.name}" />
+					<f:attribute name="group" value="#{c.group}" />
+					<f:attribute name="manufacturer" value="#{c.manufacturer}" />
+					<f:attribute name="form" value="#{c.form}" />
+					<f:attribute name="price" value="#{c.price}" />
+					<f:attribute name="quantity" value="#{c.quantity}" />
+
+				</h:commandButton>
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByGroup}">
+	    					Group
+	    				</h:commandLink>
+				</f:facet>
+	    				#{c.group}
+	    		</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByManufacturer}">
+	    					Manufacturer
+	    				</h:commandLink>
+				</f:facet>
+	    				#{c.manufacturer}
+	    		</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByForm}">
+	    					Form
+	    				</h:commandLink>
+				</f:facet>
+	    				#{c.form}
+	    		</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByPrice}">
+	    					Price
+	    				</h:commandLink>
+				</f:facet>
+	    				#{c.price}
+	    		</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:commandLink action="#{customer.sortByQuantity}">
+	    					Quantity
+	    				</h:commandLink>
+				</f:facet>
+
+
+				<h:inputText id="quantity" value="#{c.quantity}"
+					rendered="#{c.editable}" size="20" required="true" label="Quantity"
+					style="width: 25px; text-align:  center">
+
+					<f:validateRegex pattern="(^[0-9]{1,2})" />
+				</h:inputText>
+
+				<h:message for="quantity" style="color:red" />
+
+				<h:outputText value="#{c.quantity}" rendered="#{not c.editable}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header"> 
+	    				Add to cart
+					</f:facet>
+
+				<h:commandButton value="Add '#{c.name}'" type="submit"
+					action="#{customer.outcome}"
+					actionListener="#{customer.attrListener}"
+					style="background:none repeat scroll 0 0 white;cursor:pointer;border:none;text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);">
+
+
+					<f:attribute name="ID" value="#{c.ID}" />
+					<f:attribute name="name" value="#{c.name}" />
+					<f:attribute name="group" value="#{c.group}" />
+					<f:attribute name="manufacturer" value="#{c.manufacturer}" />
+					<f:attribute name="form" value="#{c.form}" />
+					<f:attribute name="price" value="#{c.price}" />
+					<f:attribute name="quantity" value="#{c.quantity}" />
+
+				</h:commandButton>
+
+			</h:column>
+
+		</h:dataTable>
+
+		<hr></hr>
+
+		<table style="text-align: center;" align="center" width="100%">
+			<tr>
+				<td width="8%">
+					<!-- Filtering by id --> 
+					<h:commandButton value="by id"
+						action="#{customer.actionFilter2}"
+						actionListener="#{customer.attrListener4}"
+						style="font-style: italic; color: red;">
+						<f:attribute name="ID" value="#{customer.id_filter}" />
+					</h:commandButton></td>
+
+				<td width="9%">
+					<!-- Filtering by name--> 
+					<h:commandButton value="by name"
+						action="#{customer.actionFilter3}"
+						actionListener="#{customer.attrListener4}"
+						style="font-style: italic; color: red;">
+						<f:attribute name="name" value="#{customer.name_filter}" />
+					</h:commandButton></td>
+
+				<td width="15%">
+					<!-- Filtering by group--> 
+					<h:commandButton value="by group"
+						action="#{customer.actionFilter4}"
+						actionListener="#{customer.attrListener4}"
+						style="font-style: italic; color: red;">
+						<f:attribute name="group" value="#{customer.group_filter}" />
+					</h:commandButton></td>
+
+				<td width="15%">
+					<!-- Filtering by manufacturer--> 
+					<h:commandButton
+						value="by manufacturer" action="#{customer.actionFilter5}"
+						actionListener="#{customer.attrListener4}"
+						style="font-style: italic; color: red;">
+						<f:attribute name="manufacturer"
+							value="#{customer.manufacturer_filter}" />
+					</h:commandButton></td>
+
+				<td width="13%">
+					<!-- Filtering by form --> 
+					<h:commandButton value="by form"
+						action="#{customer.actionFilter}"
+						actionListener="#{customer.attrListener4}"
+						style="font-style: italic; color: red;">
+						<f:attribute name="form" value="#{customer.form_filter}" />
+					</h:commandButton></td>
+
+				<td width="9%">
+					<!-- Filtering by price --> 
+					<h:commandButton value="by price"
+						action="#{customer.actionFilter6}"
+						actionListener="#{customer.attrListener4}"
+						style="font-style: italic; color: red;">
+						<f:attribute name="price" value="#{customer.price_filter}" />
+					</h:commandButton></td>
+
+				<td rowspan="2"
+					style="font-size: 28px; color: white; font-style: oblique;"><font
+					style="text-decoration: underline;">Filtering</font>...</td>
+
+			</tr>
+
+			<tr>
+
+				<td>
+					<!-- Filtering by id --> 
+					<h:selectOneMenu
+						value="#{customer.id_filter}">
+						<f:selectItems value="#{customer.list7}" var="y"
+							itemLabel="#{y.ID}" itemValue="#{y.ID}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td>
+					<!-- Filtering by name--> 
+					<h:selectOneMenu
+						value="#{customer.name_filter}">
+						<f:selectItems value="#{customer.list8}" var="y"
+							itemLabel="#{y.name}" itemValue="#{y.name}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td>
+					<!-- Filtering by group--> 
+					<h:selectOneMenu
+						value="#{customer.group_filter}">
+						<f:selectItems value="#{customer.list9}" var="y"
+							itemLabel="#{y.group}" itemValue="#{y.group}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td>
+					<!-- Filtering by manufacturer--> 
+					<h:selectOneMenu
+						value="#{customer.manufacturer_filter}">
+						<f:selectItems value="#{customer.list10}" var="y"
+							itemLabel="#{y.manufacturer}" itemValue="#{y.manufacturer}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td>
+					<!-- Filtering by form --> 
+					<h:selectOneMenu
+						value="#{customer.form_filter}">
+						<f:selectItems value="#{customer.list5}" var="y"
+							itemLabel="#{y.form}" itemValue="#{y.form}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td>
+					<!-- Filtering by price --> 
+					<h:selectOneMenu
+						value="#{customer.price_filter}">
+						<f:selectItems value="#{customer.list11}" var="y"
+							itemLabel="#{y.price}" itemValue="#{y.price}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+
+				<td></td>
+
+			</tr>
+		</table>
+
+	</h:form>
+
+	<hr></hr>
+
+
+</h:body>
+</html>

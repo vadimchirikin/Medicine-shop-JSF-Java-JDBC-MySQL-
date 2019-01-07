@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<title>Lemon</title>
+</h:head>
+
+<h:body bgcolor="#DEF3F5" leftmargin="0" topmargin="0" marginwidth="0"
+	marginheight="0">
+	<table width="100%" border="0" align="center" cellpadding="0"
+		cellspacing="0">
+
+		<tr>
+
+			<td id="mybackground" width="100%" height="80" align="left"
+				valign="middle" class="logo"
+				style="padding-left: 25px; padding-right: 25px; background: url(../img/img1.gif);">
+				<div align="center" id="tit">
+					<font face="Times New Roman,Times" size="+3" color="green">
+						LEMON </font>
+				</div>
+			</td>
+
+		</tr>
+
+	</table>
+
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+
+			<h:form>
+
+				<center>
+					<h:commandButton value="List" type="submit"
+						action="#{customer.outcome3}"
+						style="background:none repeat scroll 0 0;cursor:pointer;border:none;font-size: 19px; font-style: italic; color: white;">
+					</h:commandButton>
+
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<h:commandButton value="Cart" type="submit"
+						action="#{customer.outcome}"
+						style="background:none repeat scroll 0 0;cursor:pointer;border:none;font-size: 19px; font-style: italic; color: white;">
+					</h:commandButton>
+				</center>
+
+			</h:form>
+
+		</tr>
+
+	</table>
+
+	<center>
+
+		<img style="padding-top: 15px; padding-bottom: 15px;" border="0"
+			src="./img/Limon.gif" alt="Lemon" width="204" height="128" />
+
+	</center>
+
+
+	<table style="text-align: center;" align="center" cellpadding="0"
+		cellspacing="0" bgcolor="#DEF3F5">
+
+		<tr>
+			<td align="center" valign="middle"
+				style="text-align: center; padding-left: 30px; padding-right: 30px; padding-top: 10px;"
+				width="50%" colspan="2"><strong><u>Lemon</u> </strong> <i>
+					- a small evergreen fruit tree up to 5-8 m, with spreading or
+					pyramidal crown. From prevention to treatment and lemon drink with
+					hypovitaminosis, beriberi, diseases of the gastrointestinal tract,
+					the disturbance of mineral metabolism, rheumatism, kidney stones,
+					atherosclerosis, scurvy, sore throat, gout, high blood pressure. In
+					the Middle Ages believed that the lemon prevents the plague, and is
+					an antidote for snake bites. Eastern medicine is considered an
+					excellent means of a lemon to treat wounds and pulmonary diseases
+					and an antidote for various poisonings. In the XI century. Avicenna
+					wrote about the lemon as the best medicine for heart disease,
+					recommended eating it, and pregnant women with jaundice. Currently,
+					lemon juice and lemon oil obtained from fresh skin, used to improve
+					taste and odor of drugs. There have been attempts to use lemon
+					juice for the treatment of edema and urine acid diathesis, tincture
+					of lemon peel or zest - as a tool that increases the appetite,
+					sedative and antiemetic. In folk medicine, the lemon was used as a
+					remedy for scurvy vitamin, to lubricate the throat diphtheritic
+					plaque, as an additional remedy for jaundice and liver disease,
+					edema, kidney stones, rheumatism, gout, gastritis with low acidity,
+					lemon syrup - as antihelmintic; External solution in water, juice
+					rinse your mouth with sore throat and inflammation of the mouth,
+					used for lotions for fungal infections of the skin and eczema.
+					Lemon is widely used as a cosmetic - lemon water softens and
+					whitens the skin, it is used in a mixture with the beaten egg
+					white, glycerin and cologne to get rid of freckles, age spots,
+					rejuvenate skin. Lemon juice heals cracks in the skin, reduces the
+					brittleness of nails. Lemon rind, boiled in honey, used to improve
+					digestion. In cosmetic purposes Lemon balm is used as hair creams,
+					lotions, washes, and for the manufacture of masks for the care of a
+					variety of skin types.</i> <br></br> <br></br>
+			</td>
+			<td></td>
+
+		</tr>
+
+	</table>
+
+	<hr></hr>
+
+	<h:form>
+
+		<h:dataTable value="#{customer.list3}" var="c"
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row" width="100%">
+
+			<h:column>
+				<f:facet name="header">
+	    						ID		
+	    			</f:facet>
+
+				<center>
+					<h:outputText value="#{c.ID}" />
+				</center>
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+		    				Name
+					</f:facet>
+
+				<center>
+					<h:outputText value="#{c.name}" />
+				</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Group
+					</f:facet>
+				<center>#{c.group}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Manufacturer
+					</f:facet>
+				<center>#{c.manufacturer}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Form
+					</f:facet>
+				<center>#{c.form}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Price
+					</f:facet>
+				<center>#{c.price}</center>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+	    					Quantity
+					</f:facet>
+
+				<center>
+
+					<h:inputText id="quantity" value="#{c.quantity}"
+						rendered="#{c.editable}" size="2" required="true" label="Quantity"
+						style="width: 25px; text-align:  center">
+
+						<f:validateRegex pattern="(^[0-9]{1,2})" />
+					</h:inputText>
+
+					<h:message for="quantity" style="color:red" />
+
+					<h:outputText value="#{c.quantity}" rendered="#{not c.editable}" />
+
+				</center>
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header"> 
+	    				Add to cart
+					</f:facet>
+
+				<center>
+					<h:commandButton value="Add #{c.name}" type="submit"
+						action="#{customer.outcome}"
+						actionListener="#{customer.attrListener}"
+						style="background:none repeat scroll 0 0 white;cursor:pointer;border:none;text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);">
+
+						<f:attribute name="ID" value="#{c.ID}" />
+						<f:attribute name="name" value="#{c.name}" />
+						<f:attribute name="group" value="#{c.group}" />
+						<f:attribute name="manufacturer" value="#{c.manufacturer}" />
+						<f:attribute name="form" value="#{c.form}" />
+						<f:attribute name="price" value="#{c.price}" />
+						<f:attribute name="quantity" value="#{c.quantity}" />
+
+					</h:commandButton>
+				</center>
+
+			</h:column>
+
+		</h:dataTable>
+
+	</h:form>
+
+	<hr></hr>
+
+	<br></br>
+	<br></br>
+
+	<table width="100%" border="0" align="center" cellpadding="0"
+		cellspacing="0" bgcolor="#53B4E7">
+
+		<tr>
+
+			<td height="24" align="center" valign="middle" class="text1">
+				Copyright &copy; 2012. Your Company Name. All rights reserved.</td>
+
+		</tr>
+
+	</table>
+
+
+</h:body>
+</html>
